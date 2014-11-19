@@ -4,46 +4,44 @@
 
         this.iframe = element;
         this.$iframe = $(element);
-        this.width = this.$iframe.width();
-        this.height = this.$iframe.height();
         this.defaults = {
-            width: this.width,
-            height: this.height,
-            responsive: this.width
+            width: this.$iframe.width(),
+            height: this.$iframe.height(),
+            responsive: this.$iframe.width(),
+            optional_height: this.$iframe.height()
         };
         this.options = options;
         this.config;
-        this.responsive;
-        this.ratio;
-        this.h;
-        this.ww = $(window).width();
         this.timer = null;
+        this.ww = $(window).width();
+        this.width = this.$iframe.width();
+        this.responsive_side = this.ww - this.width;
 
     };
 
     Plugin.prototype.changeSize = function () {
 
-        this.ratio = this.config.width / this.config.height;
-        this.responsive = this.config.responsive;
-        this.h = this.width / this.ratio;
+        var ratio = this.config.width / this.config.height;
+        var width = this.$iframe.width();
+        var height = width / ratio;
+        var optional_height = this.config.optional_height;
+        var ww = $(window).width();
+        var responsive = this.config.responsive;
 
-        if (this.ww < this.responsive) {
+        if (ww <= responsive + this.responsive_side) {
+//      if (window.matchMedia( "(max-width: 640px)" ).matches) {
 
              this.$iframe.css({
-                height: this.h + "px"
-            }); 
+                height: height + "px"
+            });
 
         } else {
-        
+
              this.$iframe.css({
-                height: this.config.height + "px"
+                height: optional_height + "px"
             });
 
         }
-
-        //alert(this.width);
-        //alert(this.height);
-        //alert(this.ratio);
 
     };
 
@@ -57,7 +55,7 @@
 
             _this.changeSize();
 
-        }, 200);
+        }, 100);
 
     };
 
@@ -78,6 +76,7 @@
         this.config = $.extend({}, this.defaults, this.options);
         this.changeSize();
         this.getResize();
+
         return this;
 
     };
