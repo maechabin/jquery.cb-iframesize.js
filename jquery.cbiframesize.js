@@ -7,8 +7,10 @@
         this.defaults = {
             width: this.$iframe.width(),
             height: this.$iframe.height(),
-            responsive: this.$iframe.width(),
-            optional_height: this.$iframe.height()
+            responsive: {
+                width: this.$iframe.width(),
+                height: this.$iframe.height()
+            }
         };
         this.options = options;
         this.config;
@@ -24,9 +26,9 @@
         var ratio = this.config.width / this.config.height;
         var width = this.$iframe.width();
         var height = width / ratio;
-        var optional_height = this.config.optional_height;
         var ww = $(window).width();
-        var responsive = this.config.responsive;
+        var responsive = this.config.responsive.width;
+        var optional_height = this.config.responsive.height;
 
         if (ww <= responsive + this.responsive_side) {
 //      if (window.matchMedia( "(max-width: 640px)" ).matches) {
@@ -55,7 +57,7 @@
 
             _this.changeSize();
 
-        }, 100);
+        }, 50);
 
     };
 
