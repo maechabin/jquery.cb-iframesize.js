@@ -1,3 +1,9 @@
+/*!
+ * jquery.cbiframesize.js v1.0.1
+ * Auther @maechabin
+ * Licensed under mit license
+ */
+
 ;(function ($, window, document, undefined) {
 
     var Plugin = function (element, options) {
