@@ -1,12 +1,18 @@
 /*!
- * jquery.cbiframesize.js v1.0.1
- * Auther @maechabin
- * Licensed under mit license
- */
-
+  * jquery.cbiframesize.js v1.0.2
+  * Auther @maechabin
+  * Licensed under mit license
+  * https://github.com/maechabin/jquery.cb-iframe-size.js
+  */
 ;(function ($, window, document, undefined) {
 
-    Plugin = function (element, options) {
+    if (!$.iframeSize) {
+
+        $.iframeSize = {};
+
+    };
+
+    $.iframeSize.plugin = function (element, options) {
 
         this.iframe = element;
         this.$iframe = $(element);
@@ -27,7 +33,7 @@
 
     };
 
-    Plugin.prototype.changeSize = function () {
+    $.iframeSize.plugin.prototype.changeSize = function () {
 
         var ratio = this.config.width / this.config.height;
         var width = this.$iframe.width();
@@ -52,7 +58,7 @@
 
     };
 
-    Plugin.prototype.checkTimer = function () {
+   $.iframeSize.plugin.prototype.checkTimer = function () {
 
         var _this = this;
 
@@ -62,11 +68,11 @@
 
             _this.changeSize();
 
-        }, 50);
+        }, 40);
 
     };
 
-    Plugin.prototype.getResize = function () {
+    $.iframeSize.plugin.prototype.getResize = function () {
 
         var _this = this;
 
@@ -78,8 +84,9 @@
 
     };
 
-    Plugin.prototype.init = function () {
+    $.iframeSize.plugin.prototype.init = function () {
 
+        this.$iframe.css({"max-width": "100%"});
         this.config = $.extend({}, this.defaults, this.options);
         this.changeSize();
         this.getResize();
@@ -92,7 +99,7 @@
 
         return this.each(function () {
 
-            new Plugin(this, options).init();
+            new $.iframeSize.plugin(this, options).init();
 
         });
 
