@@ -8,19 +8,25 @@
 
 ###1.外部ファイルを読み込む
 
-jQueryと当プラグインをページに読み込みます。
+jQueryと当プラグインをページに読み込む
 
 ```
 <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="jquery.cbiframesize.min.js"></script>
 ```
 
-###2.高さを変更したいiframe要素に任意のidやclass属性を付与
+###2.iframe要素
+
+・高さを変更したいiframe要素に任意のidやclass属性を付与
+
+・タグ内またはCSSでiframeのサイズを指定しておく
 ```
 <iframe src="" width="600" height="200" class="iframe-class">
 ```
 
-###3.jQueryのセレクタで高さを変更したいiframe要素を取得し、当プラグインの.cbIframeSize()メソッドを実行
+###3.プラグインを実行
+
+jQueryのセレクタで高さを変更したいiframe要素を取得し、当プラグインの.cbIframeSize()メソッドを実行する
 ```
 $(".iframe-class").cbIframeSize();
 ```
