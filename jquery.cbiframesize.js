@@ -6,7 +6,7 @@
 
 ;(function ($, window, document, undefined) {
 
-    var Plugin = function (element, options) {
+    Plugin = function (element, options) {
 
         this.iframe = element;
         this.$iframe = $(element);
@@ -37,7 +37,6 @@
         var optional_height = this.config.responsive.height;
 
         if (ww <= responsive + this.responsive_side) {
-//      if (window.matchMedia( "(max-width: 640px)" ).matches) {
 
              this.$iframe.css({
                 height: height + "px"
