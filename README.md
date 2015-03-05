@@ -21,7 +21,7 @@ jQueryと当プラグインをページに読み込む
 
 ・タグ内またはCSSでiframeのサイズを指定しておく
 ```
-<iframe src="" width="600" height="200" class="iframe-class">
+<iframe src="//example.com/" width="600" height="200" class="iframe-class">
 ```
 
 ###3.プラグインを実行
