@@ -14,7 +14,7 @@ module.exports = function (grunt) {
 
         watch: {
             js: {
-                files: '*.js',
+                files: 'jquery.cbiframesize.js',
                 tasks: ['uglify']
             }
         }
@@ -22,6 +22,7 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-watch');
+
     grunt.registerTask('default', ['uglify']);
 
 };

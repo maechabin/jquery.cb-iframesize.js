@@ -1,10 +1,10 @@
 {
-  "name": "iframe_size",
-  "version": "1.0.0",
-  "description": "",
-  "main": "Gruntfile.js",
+  "name": "jquery.cbiframesize.js",
+  "version": "1.0.3",
+  "description": "Responsive changing iframe height jQuery plugin",
   "dependencies": {
-    "grunt": "^0.4.5"
+    "grunt": "^0.4.5",
+    "jquery": "^1.9.0"
   },
   "devDependencies": {
     "grunt": "^0.4.5",
@@ -18,10 +18,11 @@
     "type": "git",
     "url": "https://github.com/maechabin/jquery.cb-iframe-size.js.git"
   },
-  "author": "",
+  "author": "@maechabin http://mae.chab.in/",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/maechabin/jquery.cb-iframe-size.js/issues"
   },
+  "main": "jquery.cbiframesize.min.js",
   "homepage": "https://github.com/maechabin/jquery.cb-iframe-size.js"
 }

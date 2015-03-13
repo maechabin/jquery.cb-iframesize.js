@@ -1,108 +1,120 @@
 /*!
-  * jquery.cbiframesize.js v1.0.2
+  * jquery.cbiframesize.js v1.0.3
   * Auther @maechabin
   * Licensed under mit license
   * https://github.com/maechabin/jquery.cb-iframe-size.js
   */
-;(function ($, window, document, undefined) {
+(function (root, factory) {
 
-    if (!$.iframeSize) {
+  if (typeof module === "object" && module.exports) {
 
-        $.iframeSize = {};
+    module.exports = factory(require("jquery"), window, document);
 
-    };
+  } else {
 
-    $.iframeSize.plugin = function (element, options) {
+    root.myModule = factory(root.postal);
 
-        this.iframe = element;
-        this.$iframe = $(element);
-        this.defaults = {
-            width: this.$iframe.width(),
-            height: this.$iframe.height(),
-            responsive: {
-                width: this.$iframe.width(),
-                height: this.$iframe.height()
-            }
-        };
-        this.options = options;
-        this.config;
-        this.timer = null;
-        this.ww = $(window).width();
-        this.width = this.$iframe.width();
-        this.responsive_side = this.ww - this.width;
+  }
 
-    };
+} (this, function ($, window, document, undefined) {
 
-    $.iframeSize.plugin.prototype.changeSize = function () {
+  if (!$.iframeSize) {
 
-        var ratio = this.config.width / this.config.height;
-        var width = this.$iframe.width();
-        var height = width / ratio;
-        var ww = $(window).width();
-        var responsive = this.config.responsive.width;
-        var optional_height = this.config.responsive.height;
+    $.iframeSize = {};
 
-        if (ww <= responsive + this.responsive_side) {
+  };
 
-             this.$iframe.css({
-                height: height + "px"
-            });
+  $.iframeSize.plugin = function (element, options) {
 
-        } else {
-
-             this.$iframe.css({
-                height: optional_height + "px"
-            });
-
+    this.iframe = element;
+      this.$iframe = $(element);
+      this.defaults = {
+        width: this.$iframe.width(),
+        height: this.$iframe.height(),
+        responsive: {
+          width: this.$iframe.width(),
+          height: this.$iframe.height()
         }
+      };
+      this.options = options;
+      this.config;
+      this.timer = null;
+      this.ww = $(window).width();
+      this.width = this.$iframe.width();
+      this.responsive_side = this.ww - this.width;
 
-    };
+  };
 
-   $.iframeSize.plugin.prototype.checkTimer = function () {
+  $.iframeSize.plugin.prototype.changeSize = function () {
 
-        var _this = this;
+    var ratio = this.config.width / this.config.height;
+    var width = this.$iframe.width();
+    var height = width / ratio;
+    var ww = $(window).width();
+    var responsive = this.config.responsive.width;
+    var optional_height = this.config.responsive.height;
 
-        clearTimeout(this.timer);
+    if (ww <= responsive + this.responsive_side) {
 
-        this.timer = setTimeout(function () {
+      this.$iframe.css({
+        height: height + "px"
+      });
 
-            _this.changeSize();
+    } else {
 
-        }, 40);
+      this.$iframe.css({
+        height: optional_height + "px"
+      });
 
-    };
+    }
 
-    $.iframeSize.plugin.prototype.getResize = function () {
+  };
 
-        var _this = this;
+  $.iframeSize.plugin.prototype.checkTimer = function () {
 
-        $(window).on("resize", function () {
+    var _this = this;
 
-            _this.checkTimer();
+    clearTimeout(this.timer);
 
-        });
+    this.timer = setTimeout(function () {
 
-    };
+      _this.changeSize();
 
-    $.iframeSize.plugin.prototype.init = function () {
+    }, 40);
 
-        this.$iframe.css({"max-width": "100%"});
-        this.config = $.extend({}, this.defaults, this.options);
-        this.changeSize();
-        this.getResize();
+  };
 
-        return this;
+  $.iframeSize.plugin.prototype.getResize = function () {
 
-    };
+    var _this = this;
 
-    $.fn.cbIframeSize = function (options) {
+    $(window).on("resize", function () {
 
-        return this.each(function () {
+      _this.checkTimer();
 
-            new $.iframeSize.plugin(this, options).init();
+    });
 
-        });
+  };
 
-    };
+  $.iframeSize.plugin.prototype.init = function () {
 
-} (jQuery, window, document));
+    this.$iframe.css({"max-width": "100%"});
+    this.config = $.extend({}, this.defaults, this.options);
+    this.changeSize();
+    this.getResize();
+
+    return this;
+
+  };
+
+  $.fn.cbIframeSize = function (options) {
+
+    return this.each(function () {
+
+      new $.iframeSize.plugin(this, options).init();
+
+    });
+
+  };
+
+}));
