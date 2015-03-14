@@ -4,27 +4,21 @@
   * Licensed under mit license
   * https://github.com/maechabin/jquery.cb-iframe-size.js
   */
-(function (root, factory) {
+(function (factory) {
 
-  if (typeof module === "object" && module.exports) {
+  if (typeof module === "object" && typeof module.exports === "object") {
 
-    module.exports = factory(require("jquery"), window, document);
+    factory(require("jquery"), window, document);
 
   } else {
 
-    root.myModule = factory(root.postal);
+    factory(jQuery, window, document);
 
   }
 
-} (this, function ($, window, document, undefined) {
+} (function ($, window, document, undefined) {
 
-  if (!$.iframeSize) {
-
-    $.iframeSize = {};
-
-  };
-
-  $.iframeSize.plugin = function (element, options) {
+  var Plugin = function (element, options) {
 
     this.iframe = element;
       this.$iframe = $(element);
@@ -45,7 +39,7 @@
 
   };
 
-  $.iframeSize.plugin.prototype.changeSize = function () {
+  Plugin.prototype.changeSize = function () {
 
     var ratio = this.config.width / this.config.height;
     var width = this.$iframe.width();
@@ -70,7 +64,7 @@
 
   };
 
-  $.iframeSize.plugin.prototype.checkTimer = function () {
+  Plugin.prototype.checkTimer = function () {
 
     var _this = this;
 
@@ -84,7 +78,7 @@
 
   };
 
-  $.iframeSize.plugin.prototype.getResize = function () {
+  Plugin.prototype.getResize = function () {
 
     var _this = this;
 
@@ -96,7 +90,7 @@
 
   };
 
-  $.iframeSize.plugin.prototype.init = function () {
+  Plugin.prototype.init = function () {
 
     this.$iframe.css({"max-width": "100%"});
     this.config = $.extend({}, this.defaults, this.options);
@@ -111,7 +105,7 @@
 
     return this.each(function () {
 
-      new $.iframeSize.plugin(this, options).init();
+      new Plugin(this, options).init();
 
     });
 
