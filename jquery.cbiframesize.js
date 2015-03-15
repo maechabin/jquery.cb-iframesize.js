@@ -31,7 +31,7 @@
         }
       };
       this.options = options;
-      this.config;
+      this.config = {};
       this.timer = null;
       this.ww = $(window).width();
       this.width = this.$iframe.width();
