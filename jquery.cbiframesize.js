@@ -4,7 +4,7 @@
   * Licensed under mit license
   * https://github.com/maechabin/jquery.cb-iframe-size.js
   */
-(function (factory) {
+;(function (factory) {
 
   if (typeof module === "object" && typeof module.exports === "object") {
 
@@ -17,6 +17,8 @@
   }
 
 } (function ($, window, document, undefined) {
+
+  "use strict";
 
   var Plugin = function (element, options) {
 
