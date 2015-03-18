@@ -1,5 +1,5 @@
 /*!
-  * jquery.cbiframesize.js v1.0.3
+  * jquery.cbiframesize.js v1.0.4
   * Auther @maechabin
   * Licensed under mit license
   * https://github.com/maechabin/jquery.cb-iframe-size.js
@@ -8,7 +8,7 @@
 
   if (typeof module === "object" && typeof module.exports === "object") {
 
-    factory(require("jquery"), window, document);
+    module.exports = factory(require("jquery"), window, document);
 
   } else {
 
