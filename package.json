@@ -20,7 +20,7 @@
     "url": "https://github.com/maechabin/jquery.cb-iframe-size.js.git"
   },
   "author": "maechabin <mail@chab.in> http://mae.chab.in/",
-  "license": "ISC",
+  "license": "MIT license",
   "bugs": {
     "url": "https://github.com/maechabin/jquery.cb-iframe-size.js/issues"
   },
