@@ -23,21 +23,21 @@
   var Plugin = function (element, options) {
 
     this.iframe = element;
-      this.$iframe = $(element);
-      this.defaults = {
+    this.$iframe = $(element);
+    this.defaults = {
+      width: this.$iframe.width(),
+      height: this.$iframe.height(),
+      responsive: {
         width: this.$iframe.width(),
-        height: this.$iframe.height(),
-        responsive: {
-          width: this.$iframe.width(),
-          height: this.$iframe.height()
-        }
-      };
-      this.options = options;
-      this.config = {};
-      this.timer = null;
-      this.ww = $(window).width();
-      this.width = this.$iframe.width();
-      this.responsive_side = this.ww - this.width;
+        height: this.$iframe.height()
+      }
+    };
+    this.options = options;
+    this.config = {};
+    this.timer = null;
+    this.ww = $(window).width();
+    this.width = this.$iframe.width();
+    this.responsive_side = this.ww - this.width;
 
   };
 
